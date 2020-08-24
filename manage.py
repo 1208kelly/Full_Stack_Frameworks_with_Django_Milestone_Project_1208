@@ -5,8 +5,8 @@ import sys
 
 
 def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_online_store.settings')
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'coolest_super_power.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
