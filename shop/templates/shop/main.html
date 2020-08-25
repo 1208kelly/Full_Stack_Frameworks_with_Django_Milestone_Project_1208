@@ -11,8 +11,47 @@
     <title>Coolest Super Power</title>
 </head>
 <body>
-    <h1>Navbar placeholder</h1>
-    <hr>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'shop' %}">Coolest Super Power</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'shop' %}">New <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sales</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Coming Soon</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Top Rated</a>
+                    <a class="dropdown-item" href="#">Publisher</a>
+                    <a class="dropdown-item" href="#">Genre</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by Title, Publisher or Genre" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="form-inline my-2 my-lg-0">
+                <a href="#"class="btn btn-warning">Login</a>
+                
+                <a href="{% url 'shopping_cart' %}">
+                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+                </a>
+                <p id="cart-total">0</p>
+	        </div>
+        </div>
+    </nav>
 
     <div class="container">
         {% block content %}
