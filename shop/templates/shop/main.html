@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <title>Coolest Super Power</title>
 </head>
 <body>
@@ -40,15 +40,15 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search by Title, Publisher or Genre" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                <!-- <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> -->
             </form>
             <div class="form-inline my-2 my-lg-0">
-                <a href="#"class="btn btn-warning">Login</a>
+                <a href="#"class="btn btn-link">Login</a>
                 
                 <a href="{% url 'shopping_cart' %}">
-                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">Cart 0
                 </a>
-                <p id="cart-total">0</p>
+                <!-- <p id="cart-total">Cart 0</p> -->
 	        </div>
         </div>
     </nav>
