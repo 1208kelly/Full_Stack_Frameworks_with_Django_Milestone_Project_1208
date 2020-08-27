@@ -5,14 +5,15 @@
     <div class="row">
         {% for product in products %}
 		<div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+            <img class="thumbnail" src="{{product.image.url}}">
 			<div class="box-element product">
                 <h6><strong>{{product.name}}</strong></h6>
 				<hr>
-
+                
 				<button  class="btn btn-outline-primary add-btn">Add to Cart</button>
 				<a class="btn btn-dark" href="#">View</a>
 				<h4 id="cost-display"><strong>${{product.price|floatformat:2}}</strong></h4> <!-- float format from stackoverflow -->
+                <hr>
 			</div>
 		</div>
         {% endfor %}
