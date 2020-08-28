@@ -9,7 +9,13 @@ def shop(request):
     return render(request, 'shop/shop.html', context)
 
 def shopping_cart(request):
-	context = {}
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False) # get or create from stack overflow and djangoproject.com
+        items = order.orderitem_set.all()
+    else:
+        items = []
+	context = {'items':items}
 	return render(request, 'shop/shopping_cart.html', context)
 
 def checkout(request):
