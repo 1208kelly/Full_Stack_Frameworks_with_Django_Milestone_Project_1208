@@ -10,7 +10,7 @@
                 <h6><strong>{{product.name}}</strong></h6>
 				<hr>
                 
-				<button data-product={{product.id}} data-action="add" class="btn btn-outline-primary add-btn update-shopping-cart">Add to Cart</button> <!-- data custom attritube from stackoverflow.com -->
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-primary add-btn update-shopping-cart">Add to Cart</button> <!-- data custom attritube from stackoverflow.com -->
 				<a class="btn btn-dark" href="#">View</a>
 				<h4 id="cost-display"><strong>${{product.price|floatformat:2}}</strong></h4> <!-- float format from stackoverflow.com -->
                 <hr>

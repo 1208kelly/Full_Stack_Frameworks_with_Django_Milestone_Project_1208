@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
@@ -20,7 +21,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def imageURL(self):
         try:
@@ -61,7 +62,7 @@ class OrderItem(models.Model):
     @property
     def get_total(self):
         total = self.product.price * self.quantity
-        return total 
+        return total
 
 
 class ShippingAddress(models.Model):
@@ -75,5 +76,3 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
-
-
