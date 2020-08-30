@@ -39,8 +39,8 @@
                     <!-- <p class="quantity">2</p> -->
                     <div class="quantity-arrows" style="flex:0.8">
                         <p>
-                        <img class="chg-quantity" src="{% static  'images/arrow-up.png' %}">
-                        <img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
+                        <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-shopping-cart" src="{% static  'images/arrow-up.png' %}">
+                        <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-shopping-cart" src="{% static  'images/arrow-down.png' %}">
                         </p>
                     </div>
                     
