@@ -68,6 +68,12 @@
     </div>
 
     <script type="text/javascript">
+        var shipping = '{{order.shipping}}'
+
+        if (shipping == 'False'){
+            document.getElementById('shipping-info').innerHTML = ''
+        }
+
         csrftoken = form.getElementsByTagName('input')[0].value
         console.log('Newtoken:', form.getElementsByTagName('input')[0].value)
     </script>
