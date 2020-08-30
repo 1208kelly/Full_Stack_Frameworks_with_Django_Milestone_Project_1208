@@ -74,6 +74,14 @@
             document.getElementById('shipping-info').innerHTML = ''
         }
 
+        var form = document.getElementById('form')
+        form.addEventListener('submit', function(e){
+            e.preventDefault()
+            console.log('Form Submitted')
+            document.getElementById('form-button').classList.add('hidden');
+            document.getElementById('payment-info').classList.remove('hidden');
+        })
+
         csrftoken = form.getElementsByTagName('input')[0].value
         console.log('Newtoken:', form.getElementsByTagName('input')[0].value)
     </script>
