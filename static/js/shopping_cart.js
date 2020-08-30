@@ -17,19 +17,22 @@ for (i = 0; i < updateButtons.length; i++) {
 function updateUserOrder(productId, action){
     console.log('Sign in successfull, granting access...')
     var url = '/update_item/'
+    console.log('URL:', url)
+
     fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRFToken':csrftoken,
         },
         body:JSON.stringify({'productId': productId, 'action': action})
     })
 
-    .then((response) =>{
-        return response.json()
+    .then((response) => {
+        return response.json();
     })
 
-    .then((data) =>{
-        console.log('data:', data)
-    })
+    .then((data) => {
+        location.reload()
+    });
 }

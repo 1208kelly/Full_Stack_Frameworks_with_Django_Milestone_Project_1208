@@ -9,8 +9,27 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
+<!-- csrf from http://docs.djangoproject.com/en/3.0/ref/csrf/#ajax -->
+
     <script type="text/javascript">
         var user = '{{request.user}}'
+
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
     </script>
     <title>Coolest Super Power</title>
 </head>
@@ -50,7 +69,7 @@
                 <a href="#"class="btn btn-link">Login</a>
                 
                 <a href="{% url 'shopping_cart' %}">
-                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">Cart 0
+                    <img  id="cart-icon" src="{% static 'images/cart.png' %}">{{cartItems}}
                 </a>
                 <!-- <p id="cart-total">Cart 0</p> -->
 	        </div>
