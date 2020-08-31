@@ -70,7 +70,7 @@
 
     <script type="text/javascript">
         var shipping = '{{order.shipping}}'
-        var total - '{{order.get_cart_total|floatformat:2}}'
+        var total = '{{order.get_cart_total}}'
 
         if (shipping == 'False'){
             document.getElementById('shipping-info').innerHTML = ''
@@ -88,6 +88,10 @@
         }
 
         var form = document.getElementById('form')
+
+        csrftoken = form.getElementsByTagName('input')[0].value
+        console.log('Newtoken:', form.getElementsByTagName('input')[0].value)
+        
         form.addEventListener('submit', function(e){
             e.preventDefault()
             console.log('Form Submitted')
@@ -127,11 +131,26 @@
                 userFormData.email = form.email.value
             }
 
+            var url = "/process_order/"
+            fetch(url, {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                    'X-CSRFToken':csrftoken,
+                },
+                body:JSON.stringify({'form': userFormData, 'shipping': shippingInfo})
+            })
+
+            .then((response) => response.json())
+
+            .then((data) => {
+                console.log('Success:', data);
+                alert('Transaction complete');
+                window.location.href = "{% url 'shop' %}"
+            });
+
             console.log('Shipping Info:', shippingInfo)
             console.log('User Info:', userFormData)
         }
-
-        csrftoken = form.getElementsByTagName('input')[0].value
-        console.log('Newtoken:', form.getElementsByTagName('input')[0].value)
     </script>
 {% endblock %}
