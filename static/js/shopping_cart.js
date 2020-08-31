@@ -8,7 +8,7 @@ for (i = 0; i < updateButtons.length; i++) {
         console.log('User:', user)
         if (user == 'AnonymousUser'){
             console.log('User not signed in')
-        }else{
+        }else {
             updateUserOrder(productId, action)
         }
     })
@@ -23,6 +23,7 @@ function updateUserOrder(productId, action){
         method:'POST',
         headers:{
             'Content-Type':'application/json',
+            'Accept': 'application/json',
             'X-CSRFToken':csrftoken,
         },
         body:JSON.stringify({'productId': productId, 'action': action})
@@ -32,7 +33,7 @@ function updateUserOrder(productId, action){
         return response.json();
     })
 
-    .then((data) => {
+    .then((_data) => {
         location.reload()
     });
 }
