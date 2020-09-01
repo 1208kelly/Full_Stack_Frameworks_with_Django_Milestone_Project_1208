@@ -24,12 +24,12 @@ def shop(request):
 
 
 def shopping_cart(request):
-    
+
     data = cartData(request)
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
-    
+
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'shop/shopping_cart.html', context)
 
