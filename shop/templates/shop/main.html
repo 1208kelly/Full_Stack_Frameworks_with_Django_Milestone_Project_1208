@@ -42,11 +42,16 @@
                     return decodeURIComponent(cookiePair[1]);
                 }
             }
-
-            return null;
+            return null;// if not found
         }
 
         var shoppingCart = JSON.parse(getCookie('shopping_cart'))
+        if (shoppingCart == indefined){
+            shoppingCart = {}
+            console.log('Shoping Cart created successfully')
+            document.cookie = 'shoppingCart=' + JSON.stringify(shoppingCart) + ";domain=;path=/"
+        }
+        console.log('ShoppingCart', shoppingCart)
     </script>
     <title>Coolest Super Power</title>
 </head>
