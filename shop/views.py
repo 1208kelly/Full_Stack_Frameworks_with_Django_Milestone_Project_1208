@@ -42,6 +42,11 @@ def shopping_cart(request):
 
         for i in shoppingCart:
             cartItems += shoppingCart[i]['quantity']
+            product = Product.objects.get(id=i)
+            total = (product.price * shoppingCart[i]['quantity'])
+
+            order['get_cart_total'] += total
+            order['get_cart_items'] += shoppingCart[i]['quantity']
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'shop/shopping_cart.html', context)
