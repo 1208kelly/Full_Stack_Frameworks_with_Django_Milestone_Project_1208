@@ -31,9 +31,17 @@ def shopping_cart(request):
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
     else:
+        try:
+            shoppingCart = json.loads(request.COOKIES['shoppingCart'])
+        except:
+            shoppingCart = {}
+            print('ShoppingCart', shoppingCart)
         items = []
         order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
         cartItems = order['get_cart_items']
+
+        for i in shoppingCart:
+            cartItems += shoppingCart[i]['quantity']
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'shop/shopping_cart.html', context)
