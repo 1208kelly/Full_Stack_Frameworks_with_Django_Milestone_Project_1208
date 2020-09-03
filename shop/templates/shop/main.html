@@ -46,7 +46,7 @@
         }
 
         var shoppingCart = JSON.parse(getCookie('shopping_cart'))
-        if (shoppingCart == indefined){
+        if (shoppingCart == indefined) {
             shoppingCart = {}
             console.log('Shoping Cart created successfully')
             document.cookie = 'shoppingCart=' + JSON.stringify(shoppingCart) + ";domain=;path=/"

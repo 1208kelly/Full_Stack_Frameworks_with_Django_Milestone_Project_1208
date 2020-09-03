@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+from .utilities import cookieShoppingCart
 
 # Create your views here.
 
@@ -41,26 +42,31 @@ def shopping_cart(request):
         cartItems = order['get_cart_items']
 
         for i in shoppingCart:
-            cartItems += shoppingCart[i]['quantity']
-            product = Product.objects.get(id=i)
-            total = (product.price * shoppingCart[i]['quantity'])
+            # using try to stop any items in shopping cart that were removed from causing an error
+            try:
+                cartItems += shoppingCart[i]['quantity']
+                product = Product.objects.get(id=i)
+                total = (product.price * shoppingCart[i]['quantity'])
 
-            order['get_cart_total'] += total
-            order['get_cart_items'] += shoppingCart[i]['quantity']
+                order['get_cart_total'] += total
+                order['get_cart_items'] += shoppingCart[i]['quantity']
 
-            item = {
-                'product': {
-                    'id': product.id,
-                    'name': product.name,
-                    'price': product.price,
-                    'imageURL': product.imageURL,
-                    },
-                'quantity': shoppingCart[i]['quantity'],
-                'get_total': total,
-                }
-            items.append(item)
-
-            {'get_cart_total': 49.97, 'get_cart_items': 5, 'shipping': True}
+                item = {
+                    'product': {
+                        'id': product.id,
+                        'name': product.name,
+                        'price': product.price,
+                        'imageURL': product.imageURL,
+                        },
+                    'quantity': shoppingCart[i]['quantity'],
+                    'get_total': total,
+                    }
+                items.append(item)
+                # if item is not digital, change order shipping value to true
+                if product.digital == False:
+                    order['shipping'] = True
+            except:
+                pass
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'shop/shopping_cart.html', context)
