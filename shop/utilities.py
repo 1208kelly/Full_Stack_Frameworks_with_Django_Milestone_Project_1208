@@ -41,3 +41,18 @@ def cookieShoppingCart(request):
             pass
 
     return {'cartItems': cartItems, 'order': order, 'items': items}
+
+
+def shoppingCartData(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)  # get or create from stack overflow and djangoproject.com
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        cookieData = cookieShoppingCart(request)
+        cartItems = cookieData['cartItems']
+        order = cookieData['order']
+        items = cookieData['items']
+
+    return {'cartItems': cartItems, 'order': order, 'items': items}
