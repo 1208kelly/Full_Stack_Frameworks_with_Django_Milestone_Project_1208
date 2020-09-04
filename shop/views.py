@@ -5,6 +5,11 @@ import datetime
 from .models import *
 from .utilities import cookieShoppingCart, shoppingCartData, guestUserOrder
 
+import stripe
+
+stripe.api_key = "sk_test_51HFJ2aLlcEoQaMZcqIRtgsSl4tM02J765PMbJ0h7m9dNQNJwfe6VPW0FVLiCoQIiiVy6KGRBMXiSXQPbsXXo7Gb900mugsJKxR"
+
+
 # Create your views here.
 
 
