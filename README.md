@@ -10,7 +10,7 @@ There are still a few thing that I would like to do to this project but due to t
 
 ## UX
 
-This site is for anyone like me that enjoys comics and wouls like a quick and simple way to purchase or access these comics.
+This site is for anyone like me that enjoys comics and would like a quick and simple way to purchase or access these comics.
 
 Some user stories that I used are...
 
