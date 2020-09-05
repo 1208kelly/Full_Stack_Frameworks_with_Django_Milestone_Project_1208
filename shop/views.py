@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import JsonResponse
 import json
 import datetime
@@ -100,3 +101,16 @@ def processOrder(request):
         )
 
     return JsonResponse('Payment complete', safe=False)
+
+
+def payment(request):
+    amount = 5
+    if request.method == 'POST':
+        print('Data:', request.POST)
+
+    return redirect(reverse('success', args=[amount]))
+
+
+def paymentSuccess(request, args):
+    amount = args
+    return render(request, 'base/success.html', {'amount': amount})
