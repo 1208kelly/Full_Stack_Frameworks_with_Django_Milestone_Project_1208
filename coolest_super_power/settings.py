@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'coolest_super_power.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASE = {
-        'default': dj_database_url.parse(os.environ.get('postgres://feayptqgpuesgf:03c4b98cddd6d89fa1031e1a6d82535e116a7c3af4e0f639cc8a7835b32bf518@ec2-54-247-103-43.eu-west-1.compute.amazonaws.com:5432/dsk0s91i4cl94'))
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
