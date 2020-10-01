@@ -1,1 +1,1 @@
-web:gunicorn coolest_super_power.wsgi.application
+web: gunicorn coolest_super_power.wsgi --log-file -
