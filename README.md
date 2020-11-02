@@ -4,6 +4,8 @@
 
 Hi, my name is Rob and this is my Full Stack Frameworks with Django Milestone Project.
 
+I am resubmitting this project as there was an issue with my previous submission. There is an issue with opeing this app in Heroku.com. Any effort I have made to fix issue have been unsuccessful. I have had no support on the matter in spite of multiple requests so the issue is still ongoing. I am not a professional so expecting me to fix this issue with zero support was unfair and wildly counter productive from a course designed to teach people with  no previous coding experience.
+
 I have modeled this site on another site, [comixology](https://www.comixology.eu/), of which I am a subscriber, and tried to make it my own while keeping the minimalistic functional approach.
 
 There are still a few thing that I would like to do to this project but due to time constraints with work and home, I just wanted to get the site to a level that displays my understanding of the logic and the methodology behind creating a site like this. 
